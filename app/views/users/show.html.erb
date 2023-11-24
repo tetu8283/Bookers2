@@ -1,0 +1,26 @@
+<h1>User info</h1>
+
+<!--<div>-->
+<!--  <p><%#= image_tag 'sample-author1.jpg' %></p>-->
+<!--  <p><strong>name</strong>   <%#= @user.user.name %></p>-->
+<!--  <p><strong>introduction</strong>   <%#= @user.introduction %></p>-->
+  
+<!--  <%# if @user.user == current_user %>-->
+<!--     <%#= link_to "Edit", edit_user_path(@user) %>-->
+<!--  <%# end %>-->
+<!-- </div>-->
+  
+  
+  
+  <div>
+    <!--ユーザーの名前とプロファイル画像を表示。user.rbに記述がある-->
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <p><strong>name</strong>   <%= @user.name %></p>
+  <p><strong>introduction</strong>   <%= @user.introduction %></p>
+  <!--今ログインしているユーザに限定して表示する-->
+  <% if @user == current_user %>
+    <p><%= link_to "Edit", edit_user_path(@user) %></p>
+  <% end %>
+</div>
+<!-- ユーザーの投稿一覧 -->
+<%= render 'post_images/list', post_images: @post_images %>

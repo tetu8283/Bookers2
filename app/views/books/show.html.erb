@@ -1,0 +1,13 @@
+<h1>Books detail</h1>
+
+<div>
+  <p><%= image_tag 'sample-author1.jpg' %></p>
+  <p><%= @book.user.name %></p>
+  <p><%= @book.title %></p>
+  <p><%= @book.body %></p>
+  
+  <% if @book.user == current_user %>
+     <%= link_to "Edit", edit_book_path(@book) %>
+     <!--このボタンで削除するのでmethodを入れている-->
+    <%= link_to "Destroy", books_path(@book), method: :delete %>
+  <% end %></div>
