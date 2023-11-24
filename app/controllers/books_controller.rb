@@ -31,12 +31,13 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(book_params[:id])
+    # paramsはparamsのみに省略できる
+    @book = Book.find(params[:id])
   end
   
   private
   
   def book_params
-    params.require(:book).permit(:title, :images, :body)
+    params.require(:book).permit(:title, :body)
   end
 end

@@ -6,7 +6,7 @@ class User < ApplicationRecord
          
   # validates :name, presence: true, length: { minimum: 2 }
   # bookにとって1である
-  has_many :book, dependent: :destroy
+  has_many :books, dependent: :destroy
   has_one_attached :profile_image
   
   
