@@ -36,6 +36,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :name
       # 自己紹介
       t.string :introduction
+      # ユーザー画像
+      t.string :profile_image
       t.timestamps null: false
     end
 

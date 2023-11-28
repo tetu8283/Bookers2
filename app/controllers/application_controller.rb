@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
     
     
     def after_sign_in_path_for(resource)
-        # 詳細画面へ
+        # ログイン後にユーザー詳細画面へ
         user_path(current_user)
     end
     
@@ -12,9 +12,15 @@ class ApplicationController < ActionController::Base
         root_path
     end
     
+    
+    
     protected
     # nameをデータとして保存する
     def configure_permitted_parameters
      devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    #  ログイン時にnameでログインできるようにしている
+     devise_parameter_sanitizer.permit(:sign_in, keys: [:name])
     end
+    
+    
 end

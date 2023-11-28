@@ -4,19 +4,17 @@ class Book < ApplicationRecord
     belongs_to :user
     
     def get_image
-        if image.attached?
-            image
-        else
-            'no_image.jpg'
-        end
-    end
-    
-    
-    def get_image
+        # もしプロフィール画像がまだなければ
         unless image.attached?
-          file_path = Rails.root.join('app/assets/images/no_image.jpg')
+        # 以下のpathの画像を表示する
+          file_path = Rails.root.join('/Bookers2app/assets/images/no-image.jpg')
           image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
         end
         image
     end
+    
+    # titleは必須項目
+    validates :title, presence: true
+    # bodyは空でなく、２００以下
+    validates :body, {presence: true, length: {maximum: 200}}
 end
